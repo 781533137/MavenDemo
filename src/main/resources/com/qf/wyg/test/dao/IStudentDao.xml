@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.wyg.test.dao.IStudentDao">
+
+    <delete id="deleteStuBySid">
+        delete from t_text
+        where sid
+        in
+        <foreach collection="sids" separator="," item="sid" open="(" close=")">
+             #{sid}
+        </foreach>
+    </delete>
+    <!-- 使用insert, update,delete, select标签写sql -->
+
+    <select id="selectStuAll" resultType="com.qf.wyg.test.entity.E_Text">
+        select * from t_text
+    </select>
+</mapper>

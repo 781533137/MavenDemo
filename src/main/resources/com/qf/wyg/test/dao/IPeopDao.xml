@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--约束文件：规定标签的内容和顺序-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper根标签 命名空间必须有值不能为空，唯一值
+            namespace：推荐使用Dao接口的全限定名称
+            作用：参加识别sql语句的作用-->
+<mapper namespace="com.qf.wyg.test.dao.IPeopDao">
+<!--    id:要执行的sql语句的唯一标识，是一个自定义字符串。推荐使用dao接口中的方法名称
+            内部的sql语句不能写分号
+            resultType:告诉mybatis，执行sql语句，把数据赋值给那个类型的java对象。
+            resultType的值现在使用的java对象的全限定名称
+            #{studentId}:占位符，表示从java程序中传入过来的数掘
+            ！-->
+    <select id="selectPeopById" resultType="E_Text">
+        SELECT * FROM t_text WHERE sid = #{sid}
+    </select>
+<!--    如果传入给mybatis是一个java对象，使用{属性名}获取此属性的值。
+        属性值放到#{}占位符的位置
+-->
+    <insert id="insertStudent">
+        insert into peop values (#{sid},#{sno},#{sname},#{sage},#{sgender},#{area})
+    </insert>
+</mapper>
